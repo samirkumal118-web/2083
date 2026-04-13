@@ -1,45 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy New Year 2083</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>🎉 Happy New Year 2083 🎉</h1>
+<div class="container">
+    <h1>🎉 Happy New Year 2083 🎉</h1>
 
-        <div id="countdown">
-            <div><span id="days">0</span>
-                <p>Days</p>
-            </div>
-            <div><span id="hours">0</span>
-                <p>Hours</p>
-            </div>
-            <div><span id="minutes">0</span>
-                <p>Minutes</p>
-            </div>
-            <div><span id="seconds">0</span>
-                <p>Seconds</p>
-            </div>
-        </div>
-
-        <div class="wish-box">
-            <input type="text" id="nameInput" placeholder="Enter your name...">
-            <button onclick="generateWish()">Get Wish 🎁</button>
-            <p id="wishMessage"></p>
-        </div>
-
-        <button class="celebrate-btn" onclick="celebrate()">Celebrate 🎆</button>
+    <div id="countdown">
+        <div><span id="days">0</span><p>Days</p></div>
+        <div><span id="hours">0</span><p>Hours</p></div>
+        <div><span id="minutes">0</span><p>Minutes</p></div>
+        <div><span id="seconds">0</span><p>Seconds</p></div>
     </div>
 
-    <canvas id="fireworks"></canvas>
+    <div class="wish-box">
+        <input type="text" id="nameInput" placeholder="Enter your name...">
+        <button id="wishBtn">Get Wish 🎁</button>
+        <p id="wishMessage"></p>
+    </div>
 
-    <script src="script.js"></script>
+    <button id="celebrateBtn" class="celebrate-btn">Celebrate 🎆</button>
+</div>
+
+<canvas id="fireworks"></canvas>
+
+<script src="script.js"></script>
 </body>
-
 </html>
