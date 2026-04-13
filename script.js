@@ -1,4 +1,3 @@
-
 const newYearDate = new Date("April 14, 2026 00:00:00").getTime();
 
 setInterval(() => {
@@ -11,18 +10,17 @@ setInterval(() => {
     document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
 }, 1000);
 
-
 const wishes = [
     "✨ May 2083 bring you success and happiness!",
     "🎉 New year, new goals, new achievements!",
-    "💖 Wishing you love , positivity this year and I am always with you!",
-    "🌟 Shine brighter in 2083 like your preety smile!",
+    "💖 Wishing you love, positivity this year and I am always with you!",
+    "🌟 Shine brighter in 2083 like your pretty smile!",
     "🚀 Level up your life this year 2083!",
     "😊 Stay happy, stay strong, stay safe!",
     "💫 Make every single moment magical!",
-    "🔥 Chase your dreams fearlessly I am always there with you!",
+    "🔥 Chase your dreams fearlessly, I am always there with you!",
     "🌈 Fill your life with joy and happiness!",
-    "🎯 Achieve everything you wish for and never loose hope!"
+    "🎯 Achieve everything you wish for and never lose hope!"
 ];
 
 let lastIndex = -1;
@@ -41,8 +39,6 @@ function generateWish() {
         `${wishes[randomIndex]} Happy New Year 2083, ${name}! 🎆`;
 }
 
-
-
 const canvas = document.getElementById("fireworks");
 const ctx = canvas.getContext("2d");
 
@@ -60,19 +56,19 @@ function launchRocket() {
         targetY: Math.random() * canvas.height / 2 + 50
     });
 }
+
 function explode(x, y) {
-    for (let i = 0; i < 50; i++) {)
+    for (let i = 0; i < 50; i++) {
         particles.push({
             x,
             y,
             angle: Math.random() * 2 * Math.PI,
-            speed: Math.random() * 4 + 1.5, 
+            speed: Math.random() * 4 + 1.5,
             life: 1,
-            size: Math.random() * 3 + 1 
+            size: Math.random() * 3 + 1
         });
     }
 }
-
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -99,7 +95,9 @@ function animate() {
         ctx.fillStyle = `rgba(255, ${150 + Math.random() * 100}, 50, ${p.life})`;
         ctx.fill();
 
-        if (p.life <= 0) particles.splice(i, 1);
+        if (p.life <= 0) {
+            particles.splice(i, 1);
+        }
     });
 
     requestAnimationFrame(animate);
@@ -107,7 +105,6 @@ function animate() {
 
 setInterval(launchRocket, 900);
 animate();
-
 
 function celebrate() {
     for (let i = 0; i < 5; i++) {
