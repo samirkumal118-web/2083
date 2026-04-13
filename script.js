@@ -1,43 +1,64 @@
+
 const newYearDate = new Date("April 14, 2026 00:00:00").getTime();
 
 setInterval(() => {
     const now = new Date().getTime();
     const distance = newYearDate - now;
 
-    document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-    document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("days").innerText =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    document.getElementById("hours").innerText =
+        Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    document.getElementById("minutes").innerText =
+        Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    document.getElementById("seconds").innerText =
+        Math.floor((distance % (1000 * 60)) / 1000);
+
 }, 1000);
+
 
 const wishes = [
     "✨ May 2083 bring you success and happiness!",
     "🎉 New year, new goals, new achievements!",
-    "💖 Wishing you love, positivity this year and I am always with you!",
-    "🌟 Shine brighter in 2083 like your pretty smile!",
-    "🚀 Level up your life this year 2083!",
-    "😊 Stay happy, stay strong, stay safe!",
-    "💫 Make every single moment magical!",
-    "🔥 Chase your dreams fearlessly, I am always there with you!",
-    "🌈 Fill your life with joy and happiness!",
-    "🎯 Achieve everything you wish for and never lose hope!"
+    "💖 Wishing you love and positivity this year!",
+    "🌟 Shine brighter this year!",
+    "🚀 Level up your life in 2083!",
+    "😊 Stay happy and strong!",
+    "💫 Make every moment magical!",
+    "🔥 Chase your dreams fearlessly!",
+    "🌈 Fill your life with joy!",
+    "🎯 Achieve everything you wish for!"
 ];
 
-let lastIndex = -1;
+let usedIndexes = [];
+
+
+document.getElementById("wishBtn").addEventListener("click", generateWish);
+document.getElementById("celebrateBtn").addEventListener("click", celebrate);
 
 function generateWish() {
     const name = document.getElementById("nameInput").value || "Friend";
 
+    if (usedIndexes.length === wishes.length) {
+        usedIndexes = [];
+    }
+
     let randomIndex;
+
     do {
         randomIndex = Math.floor(Math.random() * wishes.length);
-    } while (randomIndex === lastIndex);
+    } while (usedIndexes.includes(randomIndex));
 
-    lastIndex = randomIndex;
+    usedIndexes.push(randomIndex);
 
     document.getElementById("wishMessage").innerText =
         `${wishes[randomIndex]} Happy New Year 2083, ${name}! 🎆`;
 }
+
+
 
 const canvas = document.getElementById("fireworks");
 const ctx = canvas.getContext("2d");
@@ -62,7 +83,7 @@ function explode(x, y) {
         particles.push({
             x,
             y,
-            angle: Math.random() * 2 * Math.PI,
+            angle: Math.random() * Math.PI * 2,
             speed: Math.random() * 4 + 1.5,
             life: 1,
             size: Math.random() * 3 + 1
@@ -75,7 +96,6 @@ function animate() {
 
     rockets.forEach((r, i) => {
         r.y -= r.speed;
-
         ctx.fillStyle = "white";
         ctx.fillRect(r.x, r.y, 2, 8);
 
@@ -92,12 +112,10 @@ function animate() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, ${150 + Math.random() * 100}, 50, ${p.life})`;
+        ctx.fillStyle = `rgba(255,150,80,${p.life})`;
         ctx.fill();
 
-        if (p.life <= 0) {
-            particles.splice(i, 1);
-        }
+        if (p.life <= 0) particles.splice(i, 1);
     });
 
     requestAnimationFrame(animate);
